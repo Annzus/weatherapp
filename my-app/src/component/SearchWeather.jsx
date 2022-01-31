@@ -18,7 +18,7 @@ const Searchweather = () => {
             }
         }
         fetchWeather();
-    }, [search]);
+    }, []);
 
     let emoji = null;
     if (typeof data.main != "undefined"){
@@ -57,11 +57,6 @@ const Searchweather = () => {
         second: '2-digit',
     });
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        setSearch(input);
-    }
-
     return (
         <div>
             <div className="container mt-5">
@@ -71,10 +66,9 @@ const Searchweather = () => {
                             <img src={`https://source.unsplash.com/600x900/?${data.weather[0].main}`} 
                             class="card-img" alt="..." />
                             <div class="card-img-overlay">
-                                <form onSubmit={handleSubmit}>
+                                <form>
                                     <div class="input-group mb-4 w-75 mx-auto">
-                                        <input type="search" class="form-control" placeholder="Input City" aria-label="Input City" aria-describedby="basic-addon2" 
-                                        name="search" value={input} onChange={(e)=>setInput(e.target.value)} required />
+                                        <input type="search" class="form-control" placeholder="Input City" aria-label="Input City" aria-describedby="basic-addon2" />
                                         <button type="submit" class="input-group-text" id="basic-addon2">
                                             <i className="fas fa-search"></i>
                                         </button>
